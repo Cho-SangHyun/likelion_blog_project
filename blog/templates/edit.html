@@ -58,33 +58,9 @@
       .right{
           flex: 80%;
           margin: 5px;
-          font-family: 'Noto Sans KR', sans-serif;
-      }
-
-      .select-update-delete{
-        text-align: end;
-        font-size: 1.2rem;
-      }
-
-      .select-update-delete a{
-        text-decoration: none;
-        margin: 0 10px;
-        color: gray;
-      }
-      .right h1{
-        margin-top: 0;
-        font-size: 3em;
-        text-align: center;
-      }
-
-      .writer, .pub_date{
-        text-align: end;
-        font-size: 1.5em;
-        line-height: 0.5em;
-      }
-
-      .body{
-        font-size: 2em;
+          display: flex;
+          justify-content: center;
+          align-items: center;
       }
 
 
@@ -131,6 +107,83 @@
         margin-left: 80px;
         margin-right: 80px;
       }
+      .input-content{
+        background-color: white;
+        width: 90%;
+        height: 90%;
+        text-align: center;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 10px;
+        border-color: #a5a2a2;
+      }
+
+      form{
+        width: 100%;
+        height: 100%;
+      }
+
+      .submit-btn{
+        font-family: 'Noto Sans KR', sans-serif;
+        background-color:#FF5A5F;
+        color:white;
+        width: 70px;
+        height: 45px;
+        border-radius: 6px;
+        border: 0;
+        outline: 0;
+      }
+      #title{
+        width: 80%;
+        height: 15%;
+        font-size: 2.5rem;
+        font-family: 'Noto Sans KR', sans-serif;
+        background-color: inherit;
+        border-style: none none solid none;
+        border-width: 1px;
+        border-color: #a5a2a2;
+        outline-style: none;
+      }
+
+      #title::placeholder{
+        color: #bebdbd;
+      }
+
+      #writer{
+        width: 80%;
+        height: 5%;
+        font-size: 1.5rem;
+        font-family: 'Noto Sans KR', sans-serif;
+        background-color: inherit;
+        border-style: none none solid none;
+        border-width: 1px;
+        border-color: #a5a2a2;
+        outline-style: none;
+      }
+
+      #writer::placeholder{
+        color: #bebdbd;
+      }
+
+      #body{
+        width: 80%;
+        height: 70%;
+        border-style: none none solid none;
+        border-width: 1px;
+        border-color: #a5a2a2;
+        font-size: 1rem;
+        font-family: 'Noto Sans KR', sans-serif;
+        outline-style: none;
+      }
+
+      #body::placeholder{
+        color: #bebdbd;
+      }
+
+      .submit-btn:hover{
+        box-shadow: 3px 3px 0px 0px rgb(85, 30, 32);
+        cursor: pointer;
+      }
 
       footer{
         text-align: center;
@@ -150,39 +203,39 @@
       <a href="{%url 'intro'%}">
         intro
       </a>
-      <a href="{%url 'blog'%}" style="color: black; font-weight: bold;">
+      <a href="{%url 'blog'%}">
         blog
       </a>
     </div>
     <div class="nav-helper-right">
       <a href="{%url 'new'%}" class="to-new">
         <img src="{%static 'images/write.png'%}" width="32px">
-        <span>새 일기 작성</span>
+        <span style=>새 일기 작성</span>
       </a>
     </div>
   </nav>
 
   <div id="main-container">
     <div class="left">
-      {%for blog in blogs%}
+      {%for blogi in blogs%}
         <a href="{%url 'detail' blog.id %}">
           <div class="summary-blog">
-            <h1>{{blog.title}}</h1>
-            <p>{{blog.summary}}</p>
-            <p class="date">{{blog.pub_date}}</p>
+            <h1>{{blogi.title}}</h1>
+            <p>{{blogi.summary}}</p>
+            <p class="date">{{blogi.pub_date}}</p>
           </div>
         </a>
       {%endfor%}
     </div>
     <div class="right">
-      <div class="select-update-delete">
-        <a href="{%url 'edit' details.id%}">수정하기</a>
-        <a href="{%url 'delete' details.id%}">삭제하기</a>
+      <div class="input-content">
+        <form action="{%url 'update' blog.id%}">
+          <input type="text" id="title" name="title" placeholder="제목" value="{{blog.title}}"><br>
+          <input type="text" id="writer" name="writer" placeholder="작성자" value="{{blog.writer}}"><br>
+          <textarea name="body" id="body" placeholder="본문을 입력해 주세요">{{blog.body}}</textarea><br>
+          <button type="submit" class="submit-btn">수정</button>
+      </form>
       </div>
-      <h1>{{details.title}}</h1>
-      <p class="writer">작성자 : {{details.writer}}</p>
-      <p class="pub_date">작성일 : {{details.pub_date}}</p>
-      <p class="body">{{details.body}}</p>
     </div>
   </div>
 

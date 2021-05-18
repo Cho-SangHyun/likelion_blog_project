@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -5,6 +6,7 @@
     <title>Home</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
     <style>
       html, body{
         height: 100%
@@ -21,25 +23,20 @@
         border-style: none none solid none;
         border-width: 1px;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
       }
 
-      .main-content a{
-        text-decoration: none;
-        color:black;
-        font-size: 120px;
-        font-family: 'Noto Serif', serif;
-        font-weight: bold;
-        margin-left: 200px;
-        margin-right: 200px;
-      }
-
-      .main-content a:hover{
-        color: white;
-        background-color: #302f2f;
-      }
+      .main-content{
+        font-family: 'Noto Sans KR', sans-serif;
+        width: 30%;
+        font-size: 36px;
+        font-style: italic;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        color: rgb(158, 152, 152);
+    }
 
       header{
         text-align: center;
@@ -77,13 +74,13 @@
 </head>
 <body>
   <header>
-    <a href="#">
+    <a href="{%url 'home'%}">
       My page
     </a>
   </header>
 
   <nav>
-    <a href="{%url 'intro'%}">
+    <a href="#" style="color: black; font-weight: bold;">
       intro
     </a>
     <a href="{%url 'blog'%}">
@@ -93,12 +90,16 @@
 
   <div id="main-container">
     <div class="main-content">
-      <a href="{%url 'intro'%}">
-        intro
-      </a>
-      <a href="{%url 'blog'%}">
-        blog
-      </a>
+        <img src= {%static 'images/major.png'%} width="60%">
+        #소프트웨어학과
+    </div>
+    <div class="main-content">
+        <img src= {%static 'images/age.png'%} width="60%">
+        #24
+    </div>
+    <div class="main-content">
+        <img src= {%static 'images/mbti.png'%} width="60%">
+        #ISTP
     </div>
   </div>
 

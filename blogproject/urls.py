@@ -16,9 +16,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from blog import views
+from portfolio import views as pf
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
+    path('about_me/', views.intro, name="intro"),
+    path('blog/', views.blog, name="blog"),
     path('blog/<int:blog_id>', views.detail, name="detail"),
+    path('blog/new/', views.new, name="new"),
+    path('blog/new/create', views.create, name="create"),
+    path('blog/<int:blog_id>/delete', views.delete, name="delete"),
+    path('blog/<int:blog_id>/edit', views.edit, name="edit"),
+    path('blog/<int:blog_id>/update', views.update, name="update"),
+    path('portfolio/', pf.portfolio, name="portfolio"),
 ]
