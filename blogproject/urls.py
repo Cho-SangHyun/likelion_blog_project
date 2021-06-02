@@ -14,7 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from blog import views
 from portfolio import views as pf
 
@@ -22,12 +24,14 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
     path('about_me/', views.intro, name="intro"),
-    path('blog/', views.blog, name="blog"),
-    path('blog/<int:blog_id>', views.detail, name="detail"),
-    path('blog/new/', views.new, name="new"),
-    path('blog/new/create', views.create, name="create"),
-    path('blog/<int:blog_id>/delete', views.delete, name="delete"),
-    path('blog/<int:blog_id>/edit', views.edit, name="edit"),
-    path('blog/<int:blog_id>/update', views.update, name="update"),
+    path('blog/', include('blog.urls')),
+    path('account/', include('account.urls')),
+    # path('blog/', views.blog, name="blog"),
+    # path('blog/<int:blog_id>', views.detail, name="detail"),
+    # path('blog/new/', views.new, name="new"),
+    # path('blog/new/create', views.create, name="create"),
+    # path('blog/<int:blog_id>/delete', views.delete, name="delete"),
+    # path('blog/<int:blog_id>/edit', views.edit, name="edit"),
+    # path('blog/<int:blog_id>/update', views.update, name="update"),
     path('portfolio/', pf.portfolio, name="portfolio"),
-]
+] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <style>
+      html, body{
+        height: 100%
+      }
+
+      body{
+        display: flex;
+        flex-direction: column;
+        background-color: #e9e8e8;
+      }
+
+      #main-container{
+        flex: 1;
+        border-style: none none solid none;
+        border-width: 1px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .main-content a{
+        text-decoration: none;
+        color:black;
+        font-size: 120px;
+        font-family: 'Noto Serif', serif;
+        font-weight: bold;
+        margin-left: 200px;
+        margin-right: 200px;
+      }
+
+      .main-content a:hover{
+        color: white;
+        background-color: #302f2f;
+      }
+
+      header{
+        text-align: center;
+      }
+
+      header a{
+        text-decoration: none;
+        color:black;
+        font-size: 56px;
+        font-family: 'Noto Serif', serif;
+        font-weight: bold;
+        font-style: italic;
+      }
+
+      nav{
+        text-align: center;
+        border-style: none none solid none;
+        border-width: 1px;
+        padding: 6px;
+      }
+
+      nav a{
+        text-decoration: none;
+        color: gray;
+        font-family: 'Noto Serif', serif;
+        font-size: 32px;
+        margin-left: 80px;
+        margin-right: 80px;
+      }
+
+      footer{
+        text-align: center;
+      }
+    </style>
+</head>
+<body>
+  <header>
+    <a href="#">
+      My page
+    </a>
+  </header>
+
+  <nav>
+    <a href="{%url 'intro'%}">
+      intro
+    </a>
+    <a href="{%url 'blog'%}">
+      blog
+    </a>
+  </nav>
+
+  <!-- <li class="nav-item dropdown">
+    <a class = "nav-link dropdown-toggle" href="#" id="navbarDropdown">
+    로그인  기능
+    </a>
+    <div class = "dropdown-menu" aria-labelledby="navbarDropdown">
+    <a class = "dropdown-item" href ="{% url 'signup'%}">Sign up</a>
+    <a class = "dropdown-item" href ="{% url 'login'%}">Login</a>
+    <div class = "dropdown-divider"></div>
+    <a class="dropdown-item" href="#">내용</a>
+    </div>
+  </li> -->
+    
+
+  {%block contents%}
+  {%endblock%}
+  
+</body>
+</html>
