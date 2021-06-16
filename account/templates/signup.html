@@ -1,22 +1,90 @@
 {%extends 'base.html'%}
 
-{%block contents%}
+{%block styles%}
+<style>
+    html, body{
+      height: 100%
+    }
 
-<div class="container">
-    <h1>Sign UP</h1>
-    <form method="POST" action="{%url 'signup'%}">
-        {% csrf_token %}
-        Username:
-        <br>
-        <input name="username" type="text" value="">
-        <br> Password:
-        <br>
-        <input name="password1" type="password" value ="">
-        <br>
-        <input name= "password2" type="password" value="">
-        <br>
-        <br>
-        <input class = "btn-primary" type="submit" value="Sign up!">
+    body{
+      display: flex;
+      flex-direction: column;
+      background-color: #e9e8e8;
+    }
+
+    #main-container{
+        flex: 1;
+        border-style: none none solid none;
+        border-width: 1px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+    #main-container h1{
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: 32px;
+    }
+   form{
+       width: 70%;
+       text-align: center;
+       font-family: 'Noto Sans KR', sans-serif;
+   }
+
+    header{
+      text-align: center;
+    }
+
+    header a{
+      text-decoration: none;
+      color:black;
+      font-size: 56px;
+      font-family: 'Noto Serif', serif;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    nav{
+      text-align: center;
+      border-style: none none solid none;
+      border-width: 1px;
+      padding: 6px;
+    }
+
+    footer{
+      text-align: center;
+    }
+
+    #login-btn{
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color:#FF5A5F;
+      color:white;
+      width: 70px;
+      height: 45px;
+      border-radius: 6px;
+      border: 0;
+      outline: 0;
+    }
+
+    #login-btn:hover{
+      box-shadow: 3px 3px 0px 0px rgb(85, 30, 32);
+      cursor: pointer;
+    }
+  </style>
+{%endblock%}
+
+{%block nav-bar%}
+    <nav>
+    </nav>
+{%endblock%}
+
+{%block contents%}
+<div id="main-container">
+    <h1>Sign Up</h1>
+    <form action="{%url 'signup'%}" method="POST">
+        {%csrf_token%}
+        {{form.as_p}}
+        <button id="login-btn" type="submit">SIGN UP</button>
     </form>
 </div>
 {%endblock%}
